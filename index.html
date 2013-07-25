@@ -28,7 +28,7 @@
     }
     window.onresize = resizeWidgets;
     window.onload = function() {
-      document.getElementById('login_field').onkeydown = login_key;
+      $('#login_field').focus().get(0).onkeydown = login_key;
       resizeWidgets();
       populate_dropdowns();
       updateAll();
@@ -57,9 +57,12 @@
       <td>Sitzung:</td>
       <td><select id="session"></select></td>
     </tr>
-    <tr>
+    <tr style="display: none;"><!-- this currently is ignored by lightdm-webkit-greeter -->
       <td>Sprache:</td>
       <td><select id="language"></select></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="button" onclick="login_advance" value="Login"></td>
     </tr>
     <tr>
       <td id="login_message" colspan="2"></td>

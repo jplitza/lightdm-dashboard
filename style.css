@@ -65,7 +65,7 @@ h2, h3 {
   padding: 0.15em 0;
   color: #fff;
 }
-.line6 {
+.line6, .line6E {
   background-color: #f9cd1f;
   color: #000;
 }
@@ -141,7 +141,7 @@ h2, h3 {
   text-align: center;
 }
 #login table {
-  width: 90%;
+  width: 95%;
 }
 #login td:nth-child(odd) {
   text-align: right;
@@ -153,6 +153,9 @@ h2, h3 {
 #login input, #login select {
   font-size: inherit;
   width: 100%;
+  border: 1px #aaa solid;
+  padding: 0;
+  border-radius: 5px;
 }
 #login img {
   cursor: pointer;
@@ -160,7 +163,9 @@ h2, h3 {
   bottom: 30px;
   right: 30px;
 }
-#login td#login_message {
+#login td[colspan=2] {
   text-align: center;
+}
+#login td#login_message {
   color: red;
 }

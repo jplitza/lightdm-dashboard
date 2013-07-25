@@ -1,28 +1,26 @@
 function show_username_field() {
+  lightdm.cancel_authentication();
   $('#login_prompt').text('Benutzer:');
   $('#login_field').val('').attr('type', 'text').removeAttr('disabled').focus();
   $('#session option:selected').removeAttr('selected');
   $('#session option[value=' + lightdm.default_session + ']').attr('selected', 'selected');
 }
+function login_advance() {
+  var field = $('#login_field').get(0);
+  if(field.type == "text") {
+    field.disabled = true;
+    lightdm.start_authentication(field.value);
+  }
+  else {
+    field.disabled = true;
+    lightdm.provide_secret(field.value);
+  }
+}
 function login_key(ev) {
-  if(ev.keyCode == 9/*TAB*/ || ev.keyCode == 13/*Enter*/) {
-    if(this.type == "text") {
-      this.disabled = true;
-      lightdm.start_authentication(this.value);
-    }
-    else {
-      this.disabled = true;
-      lightdm.provide_secret(this.value);
-    }
-  }
-  else if(ev.keyCode == 27/*ESC*/) {
-    if(this.type == "text")
-      this.value = "";
-    else {
-      lightdm.cancel_authentication();
-      show_username_field();
-    }
-  }
+  if(ev.keyCode == 9/*TAB*/ || ev.keyCode == 13/*Enter*/)
+    login_advance();
+  else if(ev.keyCode == 27/*ESC*/)
+    show_username_field();
 }
 function show_prompt(text) {
   $('#login_prompt').text(text);
