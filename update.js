@@ -1,4 +1,4 @@
-APPROOT = "http://sylar.hb.jplitza.de/dashboard/";
+APPROOT = "https://orga.stugen.de/dashboard/";
 
 function updateBSAG(data) {
   if(updateBSAG.timeout)
