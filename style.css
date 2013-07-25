@@ -89,7 +89,7 @@ h2, h3 {
   padding: 0.45em 0;
 }
 #mensa table, #calendar .infoblock {
-  font-size: 70%;
+  font-size: 80%;
 }
 #mensa table {
   border-collapse: collapse;
@@ -137,16 +137,30 @@ h2, h3 {
   color: #656565;
   font-size: 80%;
 }
-#login input {
-  display: block;
-  font-size: 120%;
-  margin: auto;
-  width: 400px;
+#login {
   text-align: center;
+}
+#login table {
+  width: 90%;
+}
+#login td:nth-child(odd) {
+  text-align: right;
+  width: 0;
+}
+#login td:nth-child(even) {
+  text-align: left;
+}
+#login input, #login select {
+  font-size: inherit;
+  width: 100%;
 }
 #login img {
   cursor: pointer;
   position: absolute;
   bottom: 30px;
   right: 30px;
+}
+#login td#login_message {
+  text-align: center;
+  color: red;
 }

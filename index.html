@@ -28,10 +28,10 @@
     }
     window.onresize = resizeWidgets;
     window.onload = function() {
+      document.getElementById('login_field').onkeydown = login_key;
       resizeWidgets();
+      populate_dropdowns();
       updateAll();
-      document.getElementById('username').onkeydown = username_key;
-      document.getElementById('password').onkeydown = password_key;
     };
   </script>
 </head>
@@ -48,8 +48,23 @@
   <h2>Kalender</h2>
 </div><div class="widget" id="login">
   <h2>Login</h2>
-  <input id="username" type="text" placeholder="Benutzername">
-  <input id="password" type="password" disabled="disabled">
+  <table>
+    <tr>
+      <td id="login_prompt">Benutzer:</td>
+      <td><input id="login_field" type="text"></td>
+    </tr>
+    <tr>
+      <td>Sitzung:</td>
+      <td><select id="session"></select></td>
+    </tr>
+    <tr>
+      <td>Sprache:</td>
+      <td><select id="language"></select></td>
+    </tr>
+    <tr>
+      <td id="login_message" colspan="2"></td>
+    </tr>
+  </table>
   <img src="arrow_refresh.png" onclick="updateAll()">
 </div>
 </body>

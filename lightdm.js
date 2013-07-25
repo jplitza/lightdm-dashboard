@@ -1,37 +1,64 @@
-function username_key(ev) {
-  if(ev.keyCode == 9/*TAB*/ || ev.keyCode == 13/*Enter*/) {
-    this.disabled = true;
-    lightdm.start_authentication(this.value);
-  }
-  else if(ev.keyCode == 27/*ESC*/) {
-    this.value = "";
-  }
+function show_username_field() {
+  $('#login_prompt').text('Benutzer:');
+  $('#login_field').val('').attr('type', 'text').removeAttr('disabled').focus();
+  $('#session option:selected').removeAttr('selected');
+  $('#session option[value=' + lightdm.default_session + ']').attr('selected', 'selected');
 }
-function password_key(ev) {
+function login_key(ev) {
   if(ev.keyCode == 9/*TAB*/ || ev.keyCode == 13/*Enter*/) {
-    lightdm.provide_secret(this.value);
+    if(this.type == "text") {
+      this.disabled = true;
+      lightdm.start_authentication(this.value);
+    }
+    else {
+      this.disabled = true;
+      lightdm.provide_secret(this.value);
+    }
   }
   else if(ev.keyCode == 27/*ESC*/) {
-    this.disabled = true;
-    lightdm.cancel_authentication();
-    this.value = "";
-    $('#username').removeAttr('disabled');
+    if(this.type == "text")
+      this.value = "";
+    else {
+      lightdm.cancel_authentication();
+      show_username_field();
+    }
   }
 }
 function show_prompt(text) {
-  console.log("show_prompt(" + text + ")");
-  $('#password').val("");
-  $('#password').removeAttr('disabled');
-  $('#password').focus();
+  $('#login_prompt').text(text);
+  $('#login_field').val('').attr('type', 'password').removeAttr('disabled').focus();
+  var usersession = null;
+  for(var i = 0; i < lightdm.users.length; i++)
+    if(lightdm.users[i].name == lightdm.authentication_user)
+      usersession = lightdm.users[i].session;
+  if(usersession) {
+    $('#session option:selected').removeAttr('selected');
+    $('#session option[value=' + usersession + ']').attr('selected', 'selected');
+  }
 }
-function timed_login(foo) {}
+function show_message(text) {
+  $('#login_message').text(text);
+  setTimeout("$('#login_message').text('')", 15*1000);
+}
 function authentication_complete() {
-  console.log("authentication_complete()");
   if (lightdm.is_authenticated) {
-    console.log("authenticated !");
-    lightdm.login (lightdm.authentication_user, lightdm.default_session);
+    lightdm.login(lightdm.authentication_user, $('#session option:selected').val(), $('#language option:selected').val());
   }
   else {
-    console.log("not authenticated !");
+    show_message('Error logging in!');
+    lightdm.cancel_authentication();
+    show_username_field();
+  }
+}
+function populate_dropdowns() {
+  for(var i = 0; i < lightdm.sessions.length; i++) {
+    $('#session').append($('<option>').attr('value', lightdm.sessions[i].key).text(lightdm.sessions[i].name));
+    if(lightdm.sessions[i].key == lightdm.default_session)
+      $('#session option:last-child').attr('selected', 'selected');
+  }
+  for(var i = 0; i < lightdm.languages.length; i++) {
+    $('#language').append($('<option>').attr('value', lightdm.languages[i].code).text(lightdm.languages[i].name + ' (' + lightdm.languages[i].territory + ')'));
+    if(lightdm.languages[i].key == lightdm.default_language)
+      $('#language option:last-child').attr('selected', 'selected');
   }
 }
