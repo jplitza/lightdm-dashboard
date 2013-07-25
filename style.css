@@ -1,0 +1,152 @@
+html {
+  width: 100%;
+}
+body {
+  margin: 10px;
+  background: #bbb;
+  font-size: 20pt;
+}
+h1 {
+  display: none;
+}
+.widget {
+  float: left;
+  display: inline;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 5px 5px 5px #000;
+  overflow: hidden;
+}
+h2 {
+  font-size: 120%;
+}
+h2, h3 {
+  margin: 0 0 0.5em 0;
+  text-align: center;
+}
+.infoblock {
+  text-align: center;
+  display: inline-block;
+  border: 1px #bbb solid;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px #bbb;
+  padding: 10px;
+  vertical-align: top;
+  margin: 4px 6px 4px 0;
+  width: 29%;
+}
+.hidden {
+  display: none;
+}
+#bsag th {
+  text-align: center;
+  padding-right: 10px;
+}
+#bsag td {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tram, .bus {
+  display: inline-block;
+  font-weight: 500;
+  margin: 0 auto;
+}
+.tram {
+  width: 1.8em;
+  height: 1.2em;
+  margin: 0.15em 0;
+}
+.bus {
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.2em;
+  padding: 0.15em 0;
+  color: #fff;
+}
+.line6 {
+  background-color: #f9cd1f;
+  color: #000;
+}
+.line21 {
+  background-color: #3a9bde;
+}
+.line22 {
+  background-color: #a69ac7;
+}
+.line28 {
+  background-color: #e57f17;
+}
+.line31 {
+  background-color: #96c01c;
+}
+.line630, .line670 {
+  background-color: #868789;
+  font-size: 70%;
+  width: 2.1em;
+  height: 1.2em;
+  padding: 0.45em 0;
+}
+#mensa table, #calendar .infoblock {
+  font-size: 70%;
+}
+#mensa table {
+  border-collapse: collapse;
+}
+#mensa td, #mensa th {
+  border-bottom: 1px solid #000;
+}
+#calendar .infoblock ul {
+  padding: 0;
+}
+#calendar .infoblock li {
+  list-style-type: none;
+  text-align: left;
+  clear: left;
+  border-top: 1px #000 dotted;
+  padding-top: 0.3em;
+  margin-top: 0.3em;
+}
+#calendar .infoblock ul li:first-child {
+  border-top: 0;
+}
+#calendar .date {
+  font-family: Trebuchet MS,Verdana,Helvetica,Arial,sans-serif;
+  display: block;
+  float: left;
+  clear: left;
+  width: 2.3em;
+  text-align: center;
+  margin-right: 0.2em;
+  margin-bottom: 0.3em;
+}
+#calendar .date .day {
+  display: block;
+  background-color: #046cbe;
+  color: #fff;
+}
+#calendar .date .month {
+  display: block;
+  background-color: #f3eee4;
+  color: #656565;
+  border-bottom: 0.15em solid #dad5d3;
+}
+#calendar .time {
+  display: block;
+  color: #656565;
+  font-size: 80%;
+}
+#login input {
+  display: block;
+  font-size: 120%;
+  margin: auto;
+  width: 400px;
+  text-align: center;
+}
+#login img {
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}

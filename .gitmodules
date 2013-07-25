@@ -1,0 +1,3 @@
+[submodule "stdwerk-bremen"]
+	path = stdwerk-bremen
+	url = https://github.com/mw-vc/stdwerk-bremen.git

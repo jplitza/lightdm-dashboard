@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="update.js"></script>
+  <script src="lightdm.js"></script>
+  <script type="text/javascript">
+    function style(elem, prop) {
+      var value = window.getComputedStyle(elem).getPropertyValue(prop);
+      if(value.substr(-2, 2) == "px")
+        value = parseInt(value);
+      return value;
+    }
+    function resizeWidgets(ev) {
+      var widgets = document.getElementsByClassName("widget");
+      var body = document.getElementsByTagName("body")[0];
+      var width = (body.offsetWidth) / Math.ceil(Math.sqrt(widgets.length)) ;
+//      var height = document.getElementsByTagName("html")[0].offsetHeight / Math.floor(Math.sqrt(widgets.length));
+      var height = (window.innerHeight - style(body, "margin-top") - style(body, "margin-bottom")) / Math.round(Math.sqrt(widgets.length));
+      for(var i = 0; i < widgets.length; i++) {
+        widgets[i].style.width  = (width - style(widgets[i], "padding-left") - style(widgets[i], "padding-right") - style(widgets[i], "margin-left") - style(widgets[i], "margin-right")) + "px";
+        widgets[i].style.height = (height - style(widgets[i], "padding-top") - style(widgets[i], "padding-bottom") - style(widgets[i], "margin-top") - style(widgets[i], "margin-bottom")) + "px";
+      }
+      window.setTimeout(resizeWidgets, 100);
+    }
+    window.onresize = resizeWidgets;
+    window.onload = function() {
+      resizeWidgets();
+      updateAll();
+      document.getElementById('username').onkeydown = username_key;
+      document.getElementById('password').onkeydown = password_key;
+    };
+  </script>
+</head>
+<body>
+<h1>Dashboard</h1>
+<div class="widget" id="bsag">
+  <h2>BSAG</h2>
+  Abfahrt in Minuten:
+  <table></table>
+</div><div class="widget" id="mensa">
+  <h2>Mensa</h2>
+  <table></table>
+</div><div class="widget" id="calendar">
+  <h2>Kalender</h2>
+</div><div class="widget" id="login">
+  <h2>Login</h2>
+  <input id="username" type="text" placeholder="Benutzername">
+  <input id="password" type="password" disabled="disabled">
+  <img src="arrow_refresh.png" onclick="updateAll()">
+</div>
+</body>
+</html>

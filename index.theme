@@ -1,0 +1,6 @@
+[theme]
+name=Dashboard Greeter
+description=Dashboard Greeter Theme
+engine=lightdm-webkit-greeter
+url=index.html
+session=xubuntu
