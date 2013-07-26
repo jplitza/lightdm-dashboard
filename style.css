@@ -157,11 +157,14 @@ h2, h3 {
   padding: 0;
   border-radius: 5px;
 }
-#login img {
-  cursor: pointer;
+#panel {
   position: absolute;
   bottom: 30px;
   right: 30px;
+}
+#panel img {
+  cursor: pointer;
+  width: 16px;
 }
 #login td[colspan=2] {
   text-align: center;
