@@ -1,3 +1,11 @@
+if(!lightdm) {
+  // create dummy object
+  var lightdm = {
+    "sessions": [{"key": "session", "name": "Session"}],
+    "languages": [{"code": "de_DE", "language": "Deutsch", "territory": "Deutschland"}],
+  }
+}
+
 function show_username_field() {
   lightdm.cancel_authentication();
   $('#login_prompt').text('Benutzer:');
