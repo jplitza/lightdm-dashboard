@@ -91,7 +91,7 @@ function updateAll() {
   $.ajax(APPROOT + "data.php").done(function(data, textStatus, jqXHR) {
     updateBSAG(data.bsag);
     updateMensa(data.mensa);
-    updateCalendar(data.calendar);
+    //updateCalendar(data.calendar); // not yet implemented
     updateAll.timeout = setTimeout(updateAll, 15*60*1000); // update every 15 minutes
   });
 }

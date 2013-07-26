@@ -100,6 +100,7 @@ $mensa = array(
 echo json_encode(array(
     'bsag' => array_values($connections),
     'mensa' => $mensa,
+/* not yet implemented
     'calendar' => array(
         array('name' => 'Mathe', 'events' => array(
             array('start' => 1374690700, 'end' => 1374690760, 'title' => 'Test-Event'),
@@ -112,4 +113,5 @@ echo json_encode(array(
             array('start' => strtotime('9. April 2014 00:00:00'), 'end' => strtotime('09. April 2014 23:59:59'), 'title' => 'JP'),
         )),
     ),
+*/
 ));
