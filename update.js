@@ -75,9 +75,19 @@ function updateCalendar(data) {
   $("#calendar").append(elements);
 }
 
+function updateTime() {
+  if(updateTime.timeout)
+    clearTimeout(updateTime.timeout);
+  var now = new Date;
+  $('#time').text(formatTime(now));
+  updateTime.timeout = setTimeout(updateTime, 60*1000 - (now.getSeconds()*1000 + now.getMilliseconds()));
+}
+
 function updateAll() {
   if(updateAll.timeout)
     clearTimeout(updateAll.timeout);
+  else // First call
+    updateTime();
   $.ajax(APPROOT + "data.php").done(function(data, textStatus, jqXHR) {
     updateBSAG(data.bsag);
     updateMensa(data.mensa);
