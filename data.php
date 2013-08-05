@@ -89,17 +89,18 @@ if ($mensajson === false)
   $mensajson = refresh_mensa($mensa_url, $mensa_match, $mensa_cache_file);
 
 $mensa = json_decode($mensajson, true);
-$searchdate = date('H') > 14? date('d.m.Y', strtotime('+1 day')) : date('d.m.Y');
+$searchstamp = date('H') > 14? strtotime('+1 day') : time();
+$searchdate = date('d.m.Y', $searchstamp);
 $index = array_search($searchdate, $mensa['datum']['v']);
 if($index === FALSE)
-  $mensa = array();
+  $mensa = array('date' => $searchstamp, 'dishes' => array());
 else
-  $mensa = array(
+  $mensa = array('date' => $searchstamp, 'dishes' => array(
     array('name' => 'Essen 1', 'meal' => $mensa['essen1']['v'][$index]),
     array('name' => 'Essen 2', 'meal' => $mensa['essen2']['v'][$index]),
     array('name' => 'Wok & Pfanne', 'meal' => $mensa['wok']['v'][$index]),
     array('name' => 'Vegetarisch', 'meal' => $mensa['vegetarisch']['v'][$index]),
-  );
+  ));
 
 echo json_encode(array(
     'bsag' => array_values($connections),

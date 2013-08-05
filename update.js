@@ -37,13 +37,28 @@ function updateBSAG(data) {
 
 function updateMensa(data) {
   var template = $('<tr><th></th><td></td></tr>');
-  var elements = new Array(data.length);
-  for(var i = 0; i < data.length; i++) {
+  var elements = new Array(data.dishes.length);
+  for(var i = 0; i < data.dishes.length; i++) {
     elements[i] = template.clone();
-    $('th', elements[i]).append(document.createTextNode(data[i].name));
-    $('td', elements[i]).append(document.createTextNode(data[i].meal));
+    $('th', elements[i]).append(document.createTextNode(data.dishes[i].name));
+    $('td', elements[i]).append(document.createTextNode(data.dishes[i].meal));
   }
+  var caption = $('<span class="small">');
+  var date = new Date(data.date*1000);
+  var today = new Date();
+  var tomorrow = new Date();
+  var informal = "";
+  tomorrow.setDate(today.getDate() + 1);
+  if(date.getDate() == today.getDate() && date.getMonth() == today.getMonth() && date.getYear() == today.getYear())
+    informal = "von heute";
+  else if(date.getDate() == tomorrow.getDate() && date.getMonth() == tomorrow.getMonth() && date.getYear() == tomorrow.getYear())
+    informal = "von morgen";
+  else
+    informal = "vom " + date.getDate() + "." + date.getMonth() + "." + date.getYear();
+  caption.append(document.createTextNode(" " + informal));
   $("#mensa table tr").remove();
+  $("#mensa h2 span.small").remove();
+  $("#mensa h2").append(caption);
   $("#mensa table").append(elements);
 }
 

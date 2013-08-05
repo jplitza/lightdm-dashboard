@@ -88,6 +88,9 @@ h2, h3 {
   height: 1.2em;
   padding: 0.45em 0;
 }
+#mensa h2 .small {
+  font-size: 70%;
+}
 #mensa table, #calendar .infoblock {
   font-size: 80%;
 }
