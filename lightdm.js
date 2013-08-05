@@ -10,8 +10,7 @@ function show_username_field() {
   lightdm.cancel_authentication();
   $('#login_prompt').text('Benutzer:');
   $('#login_field').val('').attr('type', 'text').removeAttr('disabled').focus();
-  $('#session option:selected').removeAttr('selected');
-  $('#session option[value=' + lightdm.default_session + ']').attr('selected', 'selected');
+  $('#session option[value=' + lightdm.default_session + ']')[0].selected = true;
 }
 function login_advance() {
   var field = $('#login_field').get(0);
@@ -38,8 +37,7 @@ function show_prompt(text) {
     if(lightdm.users[i].name == lightdm.authentication_user)
       usersession = lightdm.users[i].session;
   if(usersession) {
-    $('#session option:selected').removeAttr('selected');
-    $('#session option[value=' + usersession + ']').attr('selected', 'selected');
+    $('#session option[value=' + usersession + ']')[0].selected = true;
   }
 }
 function show_message(text) {
