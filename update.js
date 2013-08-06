@@ -40,7 +40,7 @@ function updateMensa(data) {
   var elements = new Array(data.dishes.length);
   for(var i = 0; i < data.dishes.length; i++) {
     elements[i] = template.clone();
-    $('th', elements[i]).append(document.createTextNode(data.dishes[i].name));
+    $('th', elements[i]).append(data.dishes[i].name);
     $('td', elements[i]).append(document.createTextNode(data.dishes[i].meal));
   }
   var caption = $('<span class="small">');

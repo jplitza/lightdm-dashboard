@@ -1,3 +1,10 @@
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
 html {
   width: 100%;
 }
@@ -99,6 +106,9 @@ h2, h3 {
 }
 #mensa td, #mensa th {
   border-bottom: 1px solid #000;
+}
+#mensa th {
+  padding-right: 5px;
 }
 #calendar .infoblock ul {
   padding: 0;

@@ -94,13 +94,18 @@ $searchdate = date('d.m.Y', $searchstamp);
 $index = array_search($searchdate, $mensa['datum']['v']);
 if($index === FALSE)
   $mensa = array('date' => $searchstamp, 'dishes' => array());
-else
+else {
+  $beilagen = explode(' |,| ', $mensa['beilagen']['v'][$index]);
+  $beilagen = array_filter($beilagen, create_function('$v', 'return substr($v, 0, 13) != "Pommes frites" && substr($v, 0, 12) != "Baked potato";'));
+  $beilagen = implode(', ', $beilagen);
   $mensa = array('date' => $searchstamp, 'dishes' => array(
     array('name' => 'Essen 1', 'meal' => $mensa['essen1']['v'][$index]),
     array('name' => 'Essen 2', 'meal' => $mensa['essen2']['v'][$index]),
+    array('name' => 'Vege&shy;tarisch', 'meal' => $mensa['vegetarisch']['v'][$index]),
     array('name' => 'Wok & Pfanne', 'meal' => $mensa['wok']['v'][$index]),
-    array('name' => 'Vegetarisch', 'meal' => $mensa['vegetarisch']['v'][$index]),
+    array('name' => 'Beilagen', 'meal' => $beilagen),
   ));
+}
 
 echo json_encode(array(
     'bsag' => array_values($connections),
