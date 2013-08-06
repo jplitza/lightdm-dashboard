@@ -107,9 +107,14 @@ else {
   ));
 }
 
+$tmp = file_get_contents('https://m.xkcd.com/');
+preg_match('/<img id="comic" (?:(?:alt="(?P<alt>[^"]*)"|src="(?P<src>[^"]+)"|title="(?P<title>[^"]*)"|[^ ]+) )+\/>/', $tmp, $xkcd);
+unset($tmp);
+
 echo json_encode(array(
     'bsag' => array_values($connections),
     'mensa' => $mensa,
+    'xkcd' => $xkcd,
 /* not yet implemented
     'calendar' => array(
         array('name' => 'Mathe', 'events' => array(

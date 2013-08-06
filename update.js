@@ -90,6 +90,17 @@ function updateCalendar(data) {
   $("#calendar").append(elements);
 }
 
+function updateXKCD(data) {
+  var template = $('<img>');
+  var img = template[0];
+  img.src = data.src;
+  img.alt = data.alt;
+  img.title = data.title;
+  $('#xkcd *').remove();
+  $('#xkcd').append($('<h2>').append(document.createTextNode(data.alt)));
+  $('#xkcd').append(template);
+}
+
 function updateTime() {
   if(updateTime.timeout)
     clearTimeout(updateTime.timeout);
@@ -106,6 +117,7 @@ function updateAll() {
   $.ajax(APPROOT + "data.php").done(function(data, textStatus, jqXHR) {
     updateBSAG(data.bsag);
     updateMensa(data.mensa);
+    updateXKCD(data.xkcd);
     //updateCalendar(data.calendar); // not yet implemented
     updateAll.timeout = setTimeout(updateAll, 15*60*1000); // update every 15 minutes
   });

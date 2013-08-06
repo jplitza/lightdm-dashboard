@@ -150,6 +150,10 @@ h2, h3 {
   color: #656565;
   font-size: 80%;
 }
+#xkcd img {
+  max-width: 100%;
+  max-height: 80%;
+}
 #login {
   text-align: center;
 }
