@@ -1,11 +1,9 @@
-* {
+html {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: default;
-}
-html {
   width: 100%;
 }
 body {
