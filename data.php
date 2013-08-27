@@ -89,7 +89,7 @@ if ($mensajson === false)
   $mensajson = refresh_mensa($mensa_url, $mensa_match, $mensa_cache_file);
 
 $mensa = json_decode($mensajson, true);
-$searchstamp = date('H') > 14? strtotime('+1 day') : time();
+$searchstamp = date('H') >= 14? strtotime('+1 day') : time();
 $searchdate = date('d.m.Y', $searchstamp);
 $index = array_search($searchdate, $mensa['datum']['v']);
 if($index === FALSE)
