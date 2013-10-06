@@ -67,8 +67,9 @@ function populate_dropdowns() {
   }
 }
 function populate_panel() {
-  for(action in ["shutdown", "restart"]) {
+  for(action in {"shutdown":true, "restart":true}) {
     if(eval("lightdm.can_" + action))
-      $('#panel').append($('<img>').attr('src', action + '.svg').attr('onclick', 'lightdm.' + action + '()'));
+      $('#panel').append($('<img>').attr('src', action + '.svg').attr('onclick', 'lightdm.' + action + '()').attr('title', action));
+      $('#panel').append(' ');
   }
 }
