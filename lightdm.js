@@ -66,3 +66,9 @@ function populate_dropdowns() {
       $('#language option:last-child').attr('selected', 'selected');
   }
 }
+function populate_panel() {
+  for(action in ["shutdown", "restart"]) {
+    if(eval("lightdm.can_" + action))
+      $('#panel').append($('<img>').attr('src', action + '.svg').attr('onclick', 'lightdm.' + action + '()'));
+  }
+}
