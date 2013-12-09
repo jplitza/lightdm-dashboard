@@ -28,13 +28,11 @@
     }
     window.onresize = resizeWidgets;
     window.onload = function() {
-      setTimeout(function() {
-          $('#login_field').focus().get(0).onkeydown = login_key;
-          resizeWidgets();
-          populate_dropdowns();
-          populate_panel();
-          updateAll();
-      }, 10);
+      $('#login_field').focus().get(0).onkeydown = login_key;
+      resizeWidgets();
+      populate_dropdowns();
+      populate_panel();
+      updateAll();
     };
   </script>
 </head>
