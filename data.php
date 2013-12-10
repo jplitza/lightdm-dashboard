@@ -2,6 +2,9 @@
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
+date_default_timezone_set('Europe/Berlin');
+ini_set('default_socket_timeout', 2);
+
 function file_get_contents_post($url, $post_data) {
     $options = array('http' => array(
         'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -91,7 +94,7 @@ if ($mensajson === false)
 $mensa = json_decode($mensajson, true);
 $searchstamp = date('H') >= 14? strtotime('+1 day') : time();
 $searchdate = date('d.m.Y', $searchstamp);
-$index = array_search($searchdate, $mensa['datum']['v']);
+$index = @array_search($searchdate, $mensa['datum']['v']);
 if($index === FALSE)
   $mensa = array('date' => $searchstamp, 'dishes' => array());
 else {
