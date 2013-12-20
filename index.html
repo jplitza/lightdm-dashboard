@@ -3,8 +3,10 @@
 <head>
   <title>Dashboard</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
   <script src="update.js"></script>
   <script src="lightdm.js"></script>
   <script type="text/javascript">
@@ -14,22 +16,8 @@
         value = parseInt(value);
       return value;
     }
-    function resizeWidgets(ev) {
-      var widgets = document.getElementsByClassName("widget");
-      var body = document.getElementsByTagName("body")[0];
-      var width = (body.offsetWidth) / Math.ceil(Math.sqrt(widgets.length)) ;
-//      var height = document.getElementsByTagName("html")[0].offsetHeight / Math.floor(Math.sqrt(widgets.length));
-      var height = (window.innerHeight - style(body, "margin-top") - style(body, "margin-bottom")) / Math.round(Math.sqrt(widgets.length));
-      for(var i = 0; i < widgets.length; i++) {
-        widgets[i].style.width  = (width - style(widgets[i], "padding-left") - style(widgets[i], "padding-right") - style(widgets[i], "margin-left") - style(widgets[i], "margin-right")) + "px";
-        widgets[i].style.height = (height - style(widgets[i], "padding-top") - style(widgets[i], "padding-bottom") - style(widgets[i], "margin-top") - style(widgets[i], "margin-bottom")) + "px";
-      }
-      window.setTimeout(resizeWidgets, 100);
-    }
-    window.onresize = resizeWidgets;
     window.onload = function() {
       $('#login_field').focus().get(0).onkeydown = login_key;
-      resizeWidgets();
       populate_dropdowns();
       populate_panel();
       updateAll();
@@ -38,43 +26,42 @@
 </head>
 <body>
 <h1>Dashboard</h1>
-<div class="widget" id="bsag">
-  <h2>BSAG</h2>
-  Abfahrt in Minuten:
-  <table></table>
-</div><div class="widget" id="mensa">
-  <h2>Mensa</h2>
-  <table></table>
-</div><!-- not yet implemented
-<div class="widget" id="calendar">
-  <h2>Kalender</h2>
-</div>--><div class="widget" id="login">
-  <h2>Login</h2>
-  <table>
-    <tr>
-      <td id="login_prompt">Benutzer:</td>
-      <td><input id="login_field" type="text"></td>
-    </tr>
-    <tr>
-      <td>Sitzung:</td>
-      <td><select id="session"></select></td>
-    </tr>
-    <tr style="display: none;"><!-- this currently is ignored by lightdm-webkit-greeter -->
-      <td>Sprache:</td>
-      <td><select id="language"></select></td>
-    </tr>
-    <tr>
-      <td colspan="2"><input type="button" onclick="login_advance" value="Login"></td>
-    </tr>
-    <tr>
-      <td id="login_message" colspan="2"></td>
-    </tr>
-  </table>
+<div class="widget">
+  <div class="well" id="bsag">
+    <h2>BSAG <span class="small">Abfahrt in Minuten</span></h2>
+    <table></table>
+  </div>
+</div><div class="widget">
+  <div class="well" id="mensa">
+    <h2>Mensa</h2>
+    <table></table>
+  </div>
+</div><div class="widget">
+  <div class="well" id="xkcd">
+  </div>
 </div>
-<div class="widget" id="xkcd">
-</div>
-<div id="panel">
-  <span id="time"></span>
+<div class="navbar navbar-default navbar-fixed-bottom" id="panel">
+  <div class="navbar-form navbar-left" role="form" id="login_form">
+    <div class="form-group">
+      <input class="form-control input-sm" id="login_field" type="text" placeholder="Benutzername">
+    </div>
+    <div class="form-group">
+      <select id="session" class="form-control input-sm"></select>
+    </div>
+    <!-- this is currently ignored by lightdm-webkit-greeter -->
+    <div class="form-group" style="display: none;">
+      <select id="language" class="form-control input-sm"></select>
+    </div>
+    <input class="btn btn-primary input-sm" type="button" onclick="login_advance" value="Login">
+    <div class="row" id="login_message">
+    </div>
+  </div>
+  <span class="navbar-right navbar-text" id="time"></span>
+  <div class="navbar-right navbar-nav dropdown" id="power_dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle btn"><span class="glyphicon glyphicon-off"></span></a>
+    <ul class="dropdown-menu" role="menu" id="power_menu">
+    </ul>
+  </div>
 </div>
 </body>
 </html>

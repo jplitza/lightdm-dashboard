@@ -1,15 +1,24 @@
 if(!lightdm) {
+  console.log('No LightDM running, disabling functionality');
   // create dummy object
   var lightdm = {
     "sessions": [{"key": "session", "name": "Session"}],
     "languages": [{"code": "de_DE", "language": "Deutsch", "territory": "Deutschland"}],
   }
+  $(function() {
+    $('#power_dropdown').hide();
+    $('#login_form').hide();
+  });
 }
 
 function show_username_field() {
   lightdm.cancel_authentication();
-  $('#login_prompt').text('Benutzer:');
-  $('#login_field').val('').attr('type', 'text').removeAttr('disabled').focus();
+  $('#login_field')
+    .val('')
+    .attr('placeholder', 'Benutzer')
+    .attr('type', 'text')
+    .removeAttr('disabled')
+    .focus();
   $('#session option[value=' + lightdm.default_session + ']')[0].selected = true;
 }
 function login_advance() {
@@ -30,8 +39,12 @@ function login_key(ev) {
     show_username_field();
 }
 function show_prompt(text) {
-  $('#login_prompt').text(text);
-  $('#login_field').val('').attr('type', 'password').removeAttr('disabled').focus();
+  $('#login_field')
+    .val('')
+    .attr('placeholder', text)
+    .attr('type', 'password')
+    .removeAttr('disabled')
+    .focus();
   var usersession = null;
   for(var i = 0; i < lightdm.users.length; i++)
     if(lightdm.users[i].name == lightdm.authentication_user)
@@ -67,9 +80,19 @@ function populate_dropdowns() {
   }
 }
 function populate_panel() {
+  var labels = {"shutdown": "Herunterfahren", "restart": "Neustarten"};
+  var anything = false;
   for(action in {"shutdown":true, "restart":true}) {
-    if(eval("lightdm.can_" + action))
-      $('#panel').append($('<img>').attr('src', action + '.svg').attr('onclick', 'lightdm.' + action + '()').attr('title', action));
-      $('#panel').append(' ');
+    if(eval("lightdm.can_" + action)) {
+      anything = true;
+      $('#power_menu').append(
+        $('<li>').append($('<a>')
+          .append(labels[action])
+          .attr('href', '#')
+          .attr('role', 'menuitem')
+          .attr('onclick', 'lightdm.' + action + '()')
+        )
+      );
+    }
   }
 }

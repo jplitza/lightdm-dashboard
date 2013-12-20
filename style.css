@@ -5,24 +5,31 @@ html {
   user-select: none;
   cursor: default;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
-  margin: 10px;
-  background: #bbb;
-  font-size: 20pt;
+  width: calc(100% - 20px);
+  margin: 10px auto 0;
+  padding: 0;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
 }
 h1 {
   display: none;
 }
 .widget {
+  display: inline-block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 50%;
+  height: calc(50vh - 40px);
   float: left;
-  display: inline;
-  margin: 10px;
   padding: 10px;
-  border-radius: 20px;
-  background: #fff;
-  box-shadow: 5px 5px 5px #000;
+}
+.widget .well {
   overflow: hidden;
+  height: 100%;
 }
 h2 {
   font-size: 120%;
@@ -56,6 +63,7 @@ h2, h3 {
 .tram, .bus {
   display: inline-block;
   font-weight: 500;
+  text-align: center;
   margin: 0 auto;
 }
 .tram {
@@ -66,8 +74,8 @@ h2, h3 {
 .bus {
   border-radius: 50%;
   width: 1.5em;
-  height: 1.2em;
-  padding: 0.15em 0;
+  height: 1.5em;
+  padding-top: 0.075em;
   color: #fff;
 }
 .line6, .line6E {
@@ -155,38 +163,16 @@ h2, h3 {
   max-width: 100%;
   max-height: 80%;
 }
-#login {
-  text-align: center;
-}
-#login table {
-  width: 95%;
-}
-#login td:nth-child(odd) {
-  text-align: right;
-  width: 0;
-}
-#login td:nth-child(even) {
-  text-align: left;
-}
-#login input, #login select {
-  font-size: inherit;
-  width: 100%;
-  border: 1px #aaa solid;
-  padding: 0;
-  border-radius: 5px;
-}
-#panel {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-}
 #panel img {
   cursor: pointer;
   width: 16px;
 }
-#login td[colspan=2] {
-  text-align: center;
-}
 #login td#login_message {
   color: red;
+}
+#power_dropdown .btn {
+  padding-top: 12px;
+}
+#panel {
+  padding-right: 15px;
 }
