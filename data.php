@@ -88,14 +88,14 @@ include "stdwerk-bremen/mensa_new_config.php";
 
 $mensajson = get_mensa_json($mensa_cache_file);
 
-if ($mensajson === false)
+if (!$mensajson)
   $mensajson = refresh_mensa($mensa_url, $mensa_match, $mensa_cache_file);
 
 $mensa = json_decode($mensajson, true);
 $searchstamp = date('H') >= 14? strtotime('+1 day') : time();
 $searchdate = date('d.m.Y', $searchstamp);
 $index = @array_search($searchdate, $mensa['datum']['v']);
-if($index === FALSE)
+if($index === FALSE || $index == NULL)
   $mensa = array('date' => $searchstamp, 'dishes' => array());
 else {
   $beilagen = explode(' |,| ', $mensa['beilagen']['v'][$index]);
@@ -105,8 +105,28 @@ else {
     array('name' => 'Essen 1', 'meal' => $mensa['essen1']['v'][$index]),
     array('name' => 'Essen 2', 'meal' => $mensa['essen2']['v'][$index]),
     array('name' => 'Vege&shy;tarisch', 'meal' => $mensa['vegetarisch']['v'][$index]),
-    array('name' => 'Wok & Pfanne', 'meal' => $mensa['wok']['v'][$index]),
+    array('name' => 'Wok &amp; Pfanne', 'meal' => $mensa['wok']['v'][$index]),
     array('name' => 'Beilagen', 'meal' => $beilagen),
+  ));
+}
+
+$gw2json = get_mensa_json($gw2_cache_file);
+
+if (!$gw2json)
+  $gw2json = refresh_mensa($gw2_url, $gw2_match, $gw2_cache_file);
+
+$gw2 = json_decode($gw2json, true);
+$searchstamp = date('H') >= 18? strtotime('+1 day') : time();
+$searchdate = date('d.m.Y', $searchstamp);
+$index = array_search($searchdate, $gw2['datum']['v']);
+if($index === FALSE || $index == NULL)
+  $gw2 = array('date' => $searchstamp, 'dishes' => array());
+else {
+  $gw2 = array('date' => $searchstamp, 'dishes' => array(
+    array('name' => 'Pizza', 'meal' => $mensa['pizza']['v'][$index]),
+    array('name' => 'Pasta', 'meal' => $mensa['pasta']['v'][$index]),
+    array('name' => 'Front Cooking', 'meal' => $mensa['frontcooking']['v'][$index]),
+    array('name' => 'Suppe', 'meal' => $mensa['suppe']['v'][$index]),
   ));
 }
 
@@ -117,6 +137,7 @@ unset($tmp);
 echo json_encode(array(
     'bsag' => array_values($connections),
     'mensa' => $mensa,
+    'gw2' => $gw2,
     'xkcd' => $xkcd,
 /* not yet implemented
     'calendar' => array(

@@ -35,7 +35,8 @@ function updateBSAG(data) {
   updateBSAG.timeout = setTimeout(updateBSAG, nextupdate * 1000);
 }
 
-function updateMensa(data) {
+function updateMensa(id, data) {
+  var root = $('#' + id);
   var template = $('<tr><th></th><td></td></tr>');
   var elements = new Array(data.dishes.length);
   for(var i = 0; i < data.dishes.length; i++) {
@@ -56,10 +57,10 @@ function updateMensa(data) {
   else
     informal = "vom " + date.getDate() + "." + date.getMonth() + "." + date.getYear();
   caption.append(document.createTextNode(" " + informal));
-  $("#mensa table tr").remove();
-  $("#mensa h2 span.small").remove();
-  $("#mensa h2").append(caption);
-  $("#mensa table").append(elements);
+  $("table tr", root).remove();
+  $("h2 span.small", root).remove();
+  $("h2", root).append(caption);
+  $("table", root).append(elements);
 }
 
 function formatTime(time) {
@@ -116,7 +117,8 @@ function updateAll() {
     updateTime();
   $.ajax(APPROOT + "data.php").done(function(data, textStatus, jqXHR) {
     updateBSAG(data.bsag);
-    updateMensa(data.mensa);
+    updateMensa('mensa', data.mensa);
+    updateMensa('gw2', data.gw2);
     updateXKCD(data.xkcd);
     //updateCalendar(data.calendar); // not yet implemented
     updateAll.timeout = setTimeout(updateAll, 15*60*1000); // update every 15 minutes
