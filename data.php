@@ -123,10 +123,10 @@ if($index === FALSE || $index == NULL)
   $gw2 = array('date' => $searchstamp, 'dishes' => array());
 else {
   $gw2 = array('date' => $searchstamp, 'dishes' => array(
-    array('name' => 'Pizza', 'meal' => $mensa['pizza']['v'][$index]),
-    array('name' => 'Pasta', 'meal' => $mensa['pasta']['v'][$index]),
-    array('name' => 'Front Cooking', 'meal' => $mensa['frontcooking']['v'][$index]),
-    array('name' => 'Suppe', 'meal' => $mensa['suppe']['v'][$index]),
+    array('name' => 'Pizza', 'meal' => $gw2['pizza']['v'][$index]),
+    array('name' => 'Pasta', 'meal' => $gw2['pasta']['v'][$index]),
+    array('name' => 'Front Cooking', 'meal' => $gw2['frontcooking']['v'][$index]),
+    array('name' => 'Suppe', 'meal' => $gw2['suppe']['v'][$index]),
   ));
 }
 
