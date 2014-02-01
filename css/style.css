@@ -170,7 +170,17 @@ h2, h3 {
   cursor: pointer;
   width: 16px;
 }
-#login td#login_message {
+#login_prompt {
+  min-width: 7em;
+  text-align: right;
+}
+.bootstrap-select.btn-group {
+  margin-bottom: 0;
+}
+#login_form .bootstrap-select {
+  width: 250px;
+}
+#login_message {
   color: red;
 }
 #power_dropdown .btn {

@@ -4,11 +4,13 @@
   <title>Dashboard</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-select.min.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
   <script src="js/update.js"></script>
   <script src="js/lightdm.js"></script>
+  <script src="js/bootstrap-select.min.js"></script>
   <script type="text/javascript">
     function style(elem, prop) {
       var value = window.getComputedStyle(elem).getPropertyValue(prop);
@@ -52,18 +54,21 @@
 </div>
 <div class="navbar navbar-default navbar-fixed-bottom" id="panel">
   <div class="navbar-form navbar-left" role="form" id="login_form">
-    <div class="form-group">
-      <input class="form-control input-sm" id="login_field" type="text" placeholder="Benutzername">
+    <div class="form-group" id="login_prompt">
+      Benutzername:
     </div>
     <div class="form-group">
-      <select id="session" class="form-control input-sm"></select>
+      <input class="form-control input-sm" id="login_field" type="text">
     </div>
-    <!-- this is currently ignored by lightdm-webkit-greeter -->
+    <div class="form-group">
+      <select id="session" class="selectpicker"></select>
+    </div>
+    <!-- this is currently ignored by lightdm-webkit-greeter, thus hide it -->
     <div class="form-group" style="display: none;">
-      <select id="language" class="form-control input-sm"></select>
+      <select id="language" class="selectpicker"></select>
     </div>
-    <input class="btn btn-primary input-sm" type="button" onclick="login_advance" value="Login">
-    <div class="row" id="login_message">
+    <input class="btn btn-primary input-sm" type="button" onclick="login_advance()" value="Login">
+    <div class="form-group" id="login_message">
     </div>
   </div>
   <span class="navbar-right navbar-text" id="time"></span>
