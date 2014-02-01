@@ -21,6 +21,11 @@
       populate_dropdowns();
       populate_panel();
       updateAll();
+      // hack because for some reason, height:100% doesn't work in lightdm-webkit-greeter
+      if(parseInt($('.widget').css('height')) - parseInt($('.widget .well').css('height')) != 60) {
+        $('.widget .well').css('height', parseInt($('.widget').css('height')) - 60);
+      }
+      $('.selectpicker').selectpicker();
     };
   </script>
 </head>
