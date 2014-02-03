@@ -117,7 +117,10 @@ h2, h3 {
   border-collapse: collapse;
 }
 .mensa td, .mensa th {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #d5d5d5;
+}
+.mensa tr:last-child td, .mensa tr:last-child th {
+  border-bottom: 0;
 }
 .mensa th {
   padding-right: 5px;
