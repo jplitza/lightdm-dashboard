@@ -55,6 +55,9 @@ h2, h3 {
 .hidden {
   display: none;
 }
+#bsag table {
+  font-size: 140%;
+}
 #bsag th {
   text-align: center;
   padding-right: 10px;
@@ -104,19 +107,19 @@ h2, h3 {
   height: 1.2em;
   padding: 0.45em 0;
 }
-#mensa h2 .small {
+.mensa h2 .small {
   font-size: 70%;
 }
-#mensa table, #calendar .infoblock {
-  font-size: 80%;
-}
 #mensa table {
+  font-size: 95%;
+}
+.mensa table {
   border-collapse: collapse;
 }
-#mensa td, #mensa th {
+.mensa td, .mensa th {
   border-bottom: 1px solid #000;
 }
-#mensa th {
+.mensa th {
   padding-right: 5px;
 }
 #calendar .infoblock ul {
