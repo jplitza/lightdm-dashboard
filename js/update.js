@@ -1,5 +1,3 @@
-APPROOT = "https://orga.stugen.de/dashboard/";
-
 function updateBSAG(data) {
   if(updateBSAG.timeout)
     clearTimeout(updateBSAG.timeout);
