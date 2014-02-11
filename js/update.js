@@ -108,11 +108,43 @@ function updateTime() {
   updateTime.timeout = setTimeout(updateTime, 60*1000 - (now.getSeconds()*1000 + now.getMilliseconds()));
 }
 
+function updateMPD() {
+  if(updateMPD.timeout)
+    clearTimeout(updateMPD.timeout);
+  $.ajax(MPD_ROOT + "status", {"dataType": "json"}).done(function(data, textStatus, jqXHR) {
+    $("#mpd .nowplaying").text(data.artist + " – " + data.title);
+    if(data.state == "pause" || data.state == "stop")
+      $("#mpd_toggle .glyphicon")
+        .removeClass("glyphicon-pause")
+        .addClass("glyphicon-play")
+        .off("click")
+        .on("click", function() {
+          commandMPD("play");
+        });
+    else
+      $("#mpd_toggle .glyphicon")
+        .removeClass("glyphicon-play")
+        .addClass("glyphicon-pause")
+        .off("click")
+        .on("click", function() {
+          commandMPD("pause");
+        });
+    updateMPD.timeout = setTimeout(updateMPD, (data.time - data.elapsed)*1000);
+  });
+}
+
+function commandMPD(command) {
+  $.ajax(MPD_ROOT + command).done(function(data, textStatus, jqXHR) {
+    setTimeout(updateMPD, 300);
+  });
+}
+
 function updateAll() {
   if(updateAll.timeout)
     clearTimeout(updateAll.timeout);
   else // First call
     updateTime();
+  updateMPD();
   $.ajax(APPROOT + "data.php").done(function(data, textStatus, jqXHR) {
     updateBSAG(data.bsag);
     updateMensa('mensa', data.mensa);
