@@ -112,25 +112,40 @@ function updateMPD() {
   if(updateMPD.timeout)
     clearTimeout(updateMPD.timeout);
   $.ajax(MPD_ROOT + "status", {"dataType": "json"}).done(function(data, textStatus, jqXHR) {
-    $("#mpd .nowplaying").text(data.artist + " – " + data.title);
-    if(data.state == "pause" || data.state == "stop")
-      $("#mpd_toggle .glyphicon")
-        .removeClass("glyphicon-pause")
-        .addClass("glyphicon-play")
-        .off("click")
-        .on("click", function() {
-          commandMPD("play");
-        });
-    else
-      $("#mpd_toggle .glyphicon")
-        .removeClass("glyphicon-play")
-        .addClass("glyphicon-pause")
-        .off("click")
-        .on("click", function() {
-          commandMPD("pause");
-        });
-    updateMPD.timeout = setTimeout(updateMPD, (data.time - data.elapsed)*1000);
+    if(data.artist && data.title) {
+      $("#mpd .nowplaying").text(data.artist + " – " + data.title);
+      if(data.state == "pause" || data.state == "stop")
+        $("#mpd_toggle .glyphicon")
+          .removeClass("glyphicon-pause")
+          .addClass("glyphicon-play")
+          .off("click")
+          .on("click", playMPD);
+      else
+        $("#mpd_toggle .glyphicon")
+          .removeClass("glyphicon-play")
+          .addClass("glyphicon-pause")
+          .off("click")
+          .on("click", pauseMPD);
+    } else {
+      $("#mpd .nowplaying").text("Stopped");
+    }
+    $("#mpd").show();
+    var nextupdate = data.time - data.elapsed;
+    if(nextupdate < 10)
+      nextupdate = 10;
+    console.debug("Next update of MPD pane in " + nextupdate + " seconds")
+    updateMPD.timeout = setTimeout(updateMPD, nextupdate * 1000);
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+    $("#mpd").hide();
   });
+}
+
+function pauseMPD() {
+  commandMPD("pause");
+}
+
+function playMPD() {
+  commandMPD("play");
 }
 
 function commandMPD(command) {
