@@ -116,7 +116,7 @@ if (!$gw2json)
   $gw2json = refresh_mensa($gw2_url, $gw2_match, $gw2_cache_file);
 
 $gw2 = json_decode($gw2json, true);
-$searchstamp = date('H') >= 18? strtotime('+1 day') : time();
+$searchstamp = date('Hi') >= 1430? strtotime('+1 day') : time();
 $searchdate = date('d.m.Y', $searchstamp);
 $index = array_search($searchdate, $gw2['datum']['v']);
 if($index === FALSE || $index == NULL)
