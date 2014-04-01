@@ -15,6 +15,13 @@ function file_get_contents_post($url, $post_data) {
     return file_get_contents($url, false, $context);
 }
 
+function decode_entities($text) {
+    $text= html_entity_decode($text,ENT_QUOTES,"ISO-8859-1"); #NOTE: UTF-8 does not work!
+    $text= preg_replace('/&#(\d+);/me',"chr(\\1)",$text); #decimal notation
+    $text= preg_replace('/&#x([a-f0-9]+);/mei',"chr(0x\\1)",$text);  #hex notation
+    return $text;
+}
+
 $bsag_url = "http://62.206.133.180/bsag/XSLT_DM_REQUEST";
 $bsag_post = array(
     'command'   => '',
@@ -132,6 +139,7 @@ else {
 
 $tmp = file_get_contents('https://m.xkcd.com/');
 preg_match('/<img id="comic" (?:(?:alt="(?P<alt>[^"]*)"|src="(?P<src>[^"]+)"|title="(?P<title>[^"]*)"|[^ ]+) )+\/>/', $tmp, $xkcd);
+$xkcd = array_map("decode_entities", $xkcd);
 unset($tmp);
 
 echo json_encode(array(
