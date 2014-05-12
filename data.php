@@ -25,10 +25,13 @@ spl_autoload_register(function($class_name) {
     }
 });
 
-$modules = array('BSAGModule', 'MensaModule', 'GW2Module', 'XKCDModule');
+define('DASHBOARD_BACKEND', 1);
+
+require_once('config.php');
+
 $data = array();
 
-foreach($modules as $module_name) {
+foreach($config['modules'] as $module_name) {
     $module = new $module_name();
     $data[$module->key] = $module->get_data();
 }

@@ -1,4 +1,0 @@
-// The root of your server serving the content (i.e. everything before data.php)
-APPROOT = "http://example.org/dashboard/";
-// The root of your client175 installation to control MPD
-MPD_ROOT = "http://example.com/musik/";

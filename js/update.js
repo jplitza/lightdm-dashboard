@@ -111,7 +111,7 @@ function updateTime() {
 function updateMPD() {
   if(updateMPD.timeout)
     clearTimeout(updateMPD.timeout);
-  $.ajax(MPD_ROOT + "status", {"dataType": "json"}).done(function(data, textStatus, jqXHR) {
+  $.ajax(config['mpd_root'] + "status", {"dataType": "json"}).done(function(data, textStatus, jqXHR) {
     if(data.artist && data.title) {
       $("#mpd .nowplaying").text(data.artist + " – " + data.title);
       if(data.state == "pause" || data.state == "stop")
@@ -149,7 +149,7 @@ function playMPD() {
 }
 
 function commandMPD(command) {
-  $.ajax(MPD_ROOT + command).done(function(data, textStatus, jqXHR) {
+  $.ajax(config['mpd_root'] + command).done(function(data, textStatus, jqXHR) {
     setTimeout(updateMPD, 300);
   });
 }
@@ -160,7 +160,7 @@ function updateAll() {
   else // First call
     updateTime();
   updateMPD();
-  $.ajax(APPROOT + "data.php").done(function(data, textStatus, jqXHR) {
+  $.ajax(config['approot'] + "data.php").done(function(data, textStatus, jqXHR) {
     updateBSAG(data.bsag);
     updateMensa('mensa', data.mensa);
     updateMensa('gw2', data.gw2);
