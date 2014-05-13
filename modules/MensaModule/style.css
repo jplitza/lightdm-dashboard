@@ -1,0 +1,18 @@
+.MensaModule h2 .small {
+    font-size: 70%;
+}
+.MensaModule table {
+    font-size: 95%;
+    border-collapse: collapse;
+}
+.MensaModule td,
+.MensaModule th {
+    border-bottom: 1px solid #d5d5d5;
+}
+.MensaModule tr:last-child td,
+.MensaModule tr:last-child th {
+    border-bottom: 0;
+}
+.MensaModule th {
+    padding-right: 5px;
+}

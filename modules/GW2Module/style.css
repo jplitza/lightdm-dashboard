@@ -1,0 +1,17 @@
+.GW2Module h2 .small {
+    font-size: 70%;
+}
+.GW2Module table {
+    border-collapse: collapse;
+}
+.GW2Module td,
+.GW2Module th {
+    border-bottom: 1px solid #d5d5d5;
+}
+.GW2Module tr:last-child td,
+.GW2Module tr:last-child th {
+    border-bottom: 0;
+}
+.GW2Module th {
+    padding-right: 5px;
+}

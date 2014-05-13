@@ -1,0 +1,40 @@
+.CalendarModule .infoblock ul {
+  padding: 0;
+}
+.CalendarModule .infoblock li {
+  list-style-type: none;
+  text-align: left;
+  clear: left;
+  border-top: 1px #000 dotted;
+  padding-top: 0.3em;
+  margin-top: 0.3em;
+}
+.CalendarModule .infoblock ul li:first-child {
+  border-top: 0;
+}
+.CalendarModule .date {
+  font-family: Trebuchet MS,Verdana,Helvetica,Arial,sans-serif;
+  display: block;
+  float: left;
+  clear: left;
+  width: 2.3em;
+  text-align: center;
+  margin-right: 0.2em;
+  margin-bottom: 0.3em;
+}
+.CalendarModule .date .day {
+  display: block;
+  background-color: #046cbe;
+  color: #fff;
+}
+.CalendarModule .date .month {
+  display: block;
+  background-color: #f3eee4;
+  color: #656565;
+  border-bottom: 0.15em solid #dad5d3;
+}
+.CalendarModule .time {
+  display: block;
+  color: #656565;
+  font-size: 80%;
+}

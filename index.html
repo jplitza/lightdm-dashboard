@@ -1,88 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dashboard</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap-select.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  <script src="config.php"></script>
-  <script src="js/update.js"></script>
-  <script src="js/lightdm.js"></script>
-  <script src="js/bootstrap-select.min.js"></script>
-  <script type="text/javascript">
-    function style(elem, prop) {
-      var value = window.getComputedStyle(elem).getPropertyValue(prop);
-      if(value.substr(-2, 2) == "px")
-        value = parseInt(value);
-      return value;
-    }
-    window.onload = function() {
-      $('#login_field').focus().get(0).onkeydown = login_key;
-      populate_dropdowns();
-      populate_panel();
-      updateAll();
-      // hack because for some reason, height:100% doesn't work in lightdm-webkit-greeter
-      if(parseInt($('.widget').css('height')) - parseInt($('.widget .well').css('height')) != 60) {
-        $('.widget .well').css('height', parseInt($('.widget').css('height')) - 60);
-      }
-      $('.selectpicker').selectpicker();
-    };
-  </script>
+    <title>Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Dashboard</h1>
-<div class="widget">
-  <div class="well" id="bsag">
-    <h2>BSAG <span class="small">Abfahrt in Minuten</span></h2>
-    <table></table>
-  </div>
-</div><div class="widget">
-  <div class="well mensa" id="mensa">
-    <h2>Mensa</h2>
-    <table></table>
-  </div>
-</div><div class="widget">
-  <div class="well mensa" id="gw2">
-    <h2>GW2</h2>
-    <table></table>
-  </div>
-</div><div class="widget">
-  <div class="well" id="xkcd">
-  </div>
-</div>
-<div class="navbar navbar-default navbar-fixed-bottom" id="panel">
-  <div class="navbar-form navbar-left" role="form" id="login_form">
-    <div class="form-group" id="login_prompt">
-      Benutzername:
-    </div>
-    <div class="form-group">
-      <input class="form-control input-sm" id="login_field" type="text">
-    </div>
-    <div class="form-group">
-      <select id="session" class="selectpicker"></select>
-    </div>
-    <!-- this is currently ignored by lightdm-webkit-greeter, thus hide it -->
-    <div class="form-group" style="display: none;">
-      <select id="language" class="selectpicker"></select>
-    </div>
-    <input class="btn btn-primary input-sm" type="button" onclick="login_advance()" value="Login">
-    <div class="form-group" id="login_message">
-    </div>
-  </div>
-  <span class="navbar-right navbar-text" id="time"></span>
-  <div class="navbar-right navbar-nav dropdown" id="power_dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle btn"><span class="glyphicon glyphicon-off"></span></a>
-    <ul class="dropdown-menu" role="menu" id="power_menu">
-    </ul>
-  </div>
-  <span class="navbar-right navbar-text" id="mpd">
-    <a class="btn btn-xs" id="mpd_toggle"><span class="glyphicon glyphicon-play"></span></a>
-    <span class="nowplaying"></span>
-    <a class="btn btn-xs" onclick="commandMPD('next');"><span class="glyphicon glyphicon-fast-forward"></span></a>
-  </span>
-</div>
+    <h1>Dashboard</h1>
+    <div class="navbar navbar-default navbar-fixed-bottom" id="panel"></div>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="modules/BaseModule/BaseModule.js"></script>
+    <script src="js/loader.js"></script>
 </body>
 </html>

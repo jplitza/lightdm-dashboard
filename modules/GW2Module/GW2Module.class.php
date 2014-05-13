@@ -1,9 +1,8 @@
 <?php
 if(!isset($GLOBALS['mensa'])) {
-    require_once('stdwerk-bremen/mensa_new_config.php');
+    require_once(MODULES_DIR . '/MensaModule/stdwerk-bremen/mensa_new_config.php');
     $GLOBALS['mensa'] = get_defined_vars();
 }
-require_once('MensaModule.class.php');
 
 class GW2Module extends MensaModule {
     public $key = 'gw2';

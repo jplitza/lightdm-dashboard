@@ -1,0 +1,55 @@
+.BSAGModule table {
+  font-size: 140%;
+}
+.BSAGModule th {
+  text-align: center;
+  padding-right: 10px;
+}
+.BSAGModule td {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.BSAGModule .tram,
+.BSAGModule .bus {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto;
+}
+.BSAGModule .tram {
+  width: 1.8em;
+  height: 1.2em;
+  margin: 0.15em 0;
+}
+.BSAGModule .bus {
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  padding-top: 0.075em;
+  color: #fff;
+}
+.BSAGModule .line6,
+.BSAGModule .line6E {
+  background-color: #f9cd1f;
+  color: #000;
+}
+.BSAGModule .line21 {
+  background-color: #3a9bde;
+}
+.BSAGModule .line22 {
+  background-color: #a69ac7;
+}
+.BSAGModule .line28 {
+  background-color: #e57f17;
+}
+.BSAGModule .line31 {
+  background-color: #96c01c;
+}
+.BSAGModule .line630,
+.BSAGModule .line670 {
+  background-color: #868789;
+  font-size: 70%;
+  width: 2.1em;
+  height: 1.2em;
+  padding: 0.45em 0;
+}

@@ -1,0 +1,19 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.min.css';
+
+#login_prompt {
+    min-width: 7em;
+    text-align: right;
+}
+.login_form .bootstrap-select.btn-group {
+    margin-bottom: 0 !important;
+    width: 250px;
+}
+.login_form > * {
+    margin-right: 5pt;
+}
+#login_message {
+    color: red;
+}
+#power_dropdown .btn {
+    padding-top: 14px;
+}
