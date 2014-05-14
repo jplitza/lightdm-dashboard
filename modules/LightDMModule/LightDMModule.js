@@ -18,8 +18,8 @@ function LightDMModule() {
     window.authentication_complete = $.proxy(this.authenticationComplete, this);
 
     window.onload = function() {
-        // hack because for some reason, height:100% doesn't work in lightdm-webkit-greeter
-        $('.widget .well').css('height', parseInt($('.widget').css('height')) - 60);
+        $('.widget').css('height', screen.height / 2);
+        $('#panel').css({'position': 'absolute', 'top': screen.height - $('#panel').height()});
     };
 
     // load bootstrap-select
