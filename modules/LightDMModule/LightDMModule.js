@@ -17,12 +17,10 @@ function LightDMModule() {
     window.show_message = $.proxy(this.showMessage, this);
     window.authentication_complete = $.proxy(this.authenticationComplete, this);
 
-    // set fixed height for body
-    // otherwise lightdm-webkit-greeter extends the window indefinetly
-    console.debug(window.screen.height)
-    $('html').css('height', window.screen.height);
-    $('html').css('position', 'absolute');
-    console.debug($('html').css('height'))
+    window.onload = function() {
+        // hack because for some reason, height:100% doesn't work in lightdm-webkit-greeter
+        $('.widget .well').css('height', parseInt($('.widget').css('height')) - 60);
+    };
 
     // load bootstrap-select
     $.getScript('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.min.js', $.proxy(function() {
