@@ -21,8 +21,9 @@ class BSAGModule extends BaseModule {
         return implode('@', $out);
     }
 
-    public function get_departures($station, $time = time()) {
-        global $config;
+    public function get_departures($station, $time = null) {
+        if(!$time)
+            $time = time();
         /*
          * I obtained these request values by reverse modifying the request made
          * by the "Fahrplaner" app.
@@ -83,7 +84,8 @@ class BSAGModule extends BaseModule {
     }
 
     public function get_data() {
-        $connections = $this->get_departures(config['bsag_station']);
+        global $config;
+        $connections = $this->get_departures($config['bsag_station']);
         ksort($connections);
         return array_values($connections);
     }
