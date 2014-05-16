@@ -48,6 +48,4 @@ class MensaModule extends BaseModule {
         }
         return $mensa;
     }
-
-    public function get_javascript() {}
 }

@@ -87,8 +87,4 @@ class BSAGModule extends BaseModule {
         ksort($connections);
         return array_values($connections);
     }
-
-    public function get_javascript() {
-        return "";
-    }
 }

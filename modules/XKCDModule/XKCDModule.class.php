@@ -15,6 +15,4 @@ class XKCDModule extends BaseModule {
         unset($xkcd[3], $xkcd[2], $xkcd[1], $xkcd[0]);
         return array_map(array($this, "decode_entities"), $xkcd);
     }
-
-    public function get_javascript() {}
 }
