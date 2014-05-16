@@ -33,7 +33,7 @@ BSAGModule.prototype.paint = function() {
             var connection = this.data[i].connections[j]-time.getTime()/1000;
             if(connection < 0)
                 continue;
-            connections.push(Math.floor(connection/60));
+            connections.push(Math.ceil(connection/60));
             if(connection % 60 < nextupdate)
                 nextupdate = connection % 60;
         }
