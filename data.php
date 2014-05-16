@@ -26,8 +26,14 @@ if(is_file(CONFIG_PATH)) {
     $config = json_decode($tmp, true);
 }
 
-if(!empty($_GET['module']) && is_class_name($_GET['module']) && is_dir(MODULES_DIR . '/' . $_GET['module'])) {
-    $module = new $_GET['module']();
-    $data = $module->get_data();
+$module = null;
+if(!empty($_GET['module']))
+    $module = $_GET['module'];
+if(!empty($_SERVER['argc']) && $_SERVER['argc'] > 1)
+    $module = $_SERVER['argv'][1];
+
+if($module && is_class_name($module) && is_dir(MODULES_DIR . '/' . $module)) {
+    $obj = new $module();
+    $data = $obj->get_data();
     echo json_encode($data);
 }
