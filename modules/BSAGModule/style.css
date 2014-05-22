@@ -29,24 +29,30 @@
     border-radius: 50%;
 }
 .BSAGModule .line1,
+.BSAGModule .lineN1,
 .BSAGModule .line25,
 .BSAGModule .line53,
 .BSAGModule .line62,
 .BSAGModule .line81,
 .BSAGModule .line98 {
-    background: #0096f0;
+    background: #009640;
 }
 .BSAGModule .line2,
 .BSAGModule .line35 {
     background: #005ca9;
 }
 .BSAGModule .line3,
+.BSAGModule .lineN6,
 .BSAGModule .line21,
 .BSAGModule .line91,
 .BSAGModule .line92 {
     background: #009fe3;
 }
+.BSAGModule .lineN3 {
+    background: #fb3099;
+}
 .BSAGModule .line4,
+.BSAGModule .lineN4,
 .BSAGModule .line26,
 .BSAGModule .line27,
 .BSAGModule .line40,
@@ -55,6 +61,7 @@
     background: #e30613;
 }
 .BSAGModule .line5,
+.BSAGModule .lineN5,
 .BSAGModule .line28,
 .BSAGModule .line44,
 .BSAGModule .line57,
@@ -65,6 +72,7 @@
 }
 .BSAGModule .line6,
 .BSAGModule .line6E,
+.BSAGModule .lineN9,
 .BSAGModule .line33,
 .BSAGModule .line34,
 .BSAGModule .line38,
@@ -78,6 +86,7 @@
     background: #ffcc00;
 }
 .BSAGModule .line8,
+.BSAGModule .lineN7,
 .BSAGModule .line20,
 .BSAGModule .line29,
 .BSAGModule .line31,
@@ -91,6 +100,7 @@
     background: #312783;
 }
 .BSAGModule .line22,
+.BSAGModule .lineN94,
 .BSAGModule .line97 {
     background: #a69dcd;
 }
@@ -105,9 +115,19 @@
 .BSAGModule .line80 {
     background: #a8d3af;
 }
+.BSAGModule .lineN10,
+.BSAGModule .lineN67 {
+    background: #0075bf;
+}
 .BSAGModule .line630,
 .BSAGModule .line670 {
     background: #868789;
+}
+.BSAGModule .lineN10,
+.BSAGModule .lineN67,
+.BSAGModule .lineN94,
+.BSAGModule .line630,
+.BSAGModule .line670 {
     font-size: 70%;
     width: 2.1em;
     height: 1.2em;

@@ -65,7 +65,7 @@ class BSAGModule extends BaseModule {
         $connections = array();
         $now = time();
         foreach($result->Journey as $connection) {
-            preg_match('/^(\w+) (\d+[ES]?)#\1$/', $connection['prod'], $matches);
+            preg_match('/^(\w+) (N?\d+[ES]?)#\1$/', $connection['prod'], $matches);
             if($matches) {
                 list(, $type, $line) = $matches;
                 $dir = (string) $connection['dir'];
