@@ -1,4 +1,5 @@
 .BSAGModule table {
+  width: 100%;
 }
 .BSAGModule table,
 .BSAGModule td::first-line {
@@ -16,26 +17,20 @@
 .BSAGModule .tram,
 .BSAGModule .bus {
   display: inline-block;
-  font-weight: 500;
+  font-weight: 550;
   text-align: center;
   margin: 0 auto;
-}
-.BSAGModule .tram {
-  width: 1.8em;
-  height: 1.2em;
-  margin: 0.15em 0;
+  color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  padding-top: 0.05em;
 }
 .BSAGModule .bus {
   border-radius: 50%;
-  width: 1.5em;
-  height: 1.5em;
-  padding-top: 0.075em;
-  color: #fff;
 }
 .BSAGModule .line6,
 .BSAGModule .line6E {
   background-color: #f9cd1f;
-  color: #000;
 }
 .BSAGModule .line21 {
   background-color: #3a9bde;

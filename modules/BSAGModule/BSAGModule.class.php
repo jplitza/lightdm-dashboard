@@ -68,18 +68,26 @@ class BSAGModule extends BaseModule {
             preg_match('/^(\w+) (\d+[ES]?)#\1$/', $connection['prod'], $matches);
             if($matches) {
                 list(, $type, $line) = $matches;
+                $dir = (string) $connection['dir'];
                 if(!isset($connections[$line]))
                     $connections[$line] = array(
                         'line' => $line,
                         'type' => strtolower($type),
-                        'connections' => array()
+                        'directions' => array(),
+                    );
+                if(!isset($connections[$line]['directions'][$dir]))
+                    $connections[$line]['directions'][$dir] = array(
+                        'direction' => $dir,
+                        'connections' => array(),
                     );
                 $time = strtotime($connection['fpTime']);
                 if($time < $now)
                     continue;
-                $connections[$line]['connections'][] = strtotime($connection['fpTime']);
+                $connections[$line]['directions'][$dir]['connections'][] = strtotime($connection['fpTime']);
             }
         }
+        foreach($connections as &$connection)
+            $connection['directions'] = array_values($connection['directions']);
         return $connections;
     }
 

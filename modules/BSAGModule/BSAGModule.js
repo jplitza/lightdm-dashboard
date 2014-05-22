@@ -18,7 +18,7 @@ BSAGModule.prototype.update = function(data) {
     this.recall(this.paint);
 };
 BSAGModule.prototype.paint = function() {
-    var template = $('<tr><th><span></span></th><td></td></tr>');
+    var template = $('<tr><th><span></span></th><td></td><td></td><td></td><td></td></tr>');
     var elements = new Array(this.data.length);
     var time = new Date;
     var nextupdate = 60;
@@ -28,16 +28,22 @@ BSAGModule.prototype.paint = function() {
             .addClass(this.data[i].type)
             .addClass('line' + this.data[i].line)
             .text(this.data[i].line);
-        var connections = new Array();
-        for(var j = 0; j < this.data[i].connections.length; j++) {
-            var connection = this.data[i].connections[j]-time.getTime()/1000;
-            if(connection < 0)
-                continue;
-            connections.push(Math.ceil(connection/60));
-            if(connection % 60 < nextupdate)
-                nextupdate = connection % 60;
+        for(var k = 0; k < this.data[i].directions.length; k++) {
+            var connections = new Array();
+            for(var j = 0; j < this.data[i].directions[k].connections.length; j++) {
+                var connection = this.data[i].directions[k].connections[j]-time.getTime()/1000;
+                if(connection < 0)
+                    continue;
+                connections.push(Math.ceil(connection/60));
+                if(connection % 60 < nextupdate)
+                    nextupdate = connection % 60;
+            }
+            var dir = this.data[i].directions[k].direction;
+            // to save some space, restrict the direction to the first word
+            dir = dir.split(" ", 1)[0];
+            $('td', elements[i]).eq(2*k).text(dir);
+            $('td', elements[i]).eq(2*k+1).text(connections.join("\u200B,\u00A0"));
         }
-        $('td', elements[i]).text(connections.join("\u200B,\u00A0"));
     }
     $('tr', this.table).remove();
     this.table.append(elements);
