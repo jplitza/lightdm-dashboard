@@ -37,7 +37,7 @@ BSAGModule.prototype.paint = function() {
             if(connection % 60 < nextupdate)
                 nextupdate = connection % 60;
         }
-        $('td', elements[i]).text(connections.join(", "));
+        $('td', elements[i]).text(connections.join("\u200B,\u00A0"));
     }
     $('tr', this.table).remove();
     this.table.append(elements);

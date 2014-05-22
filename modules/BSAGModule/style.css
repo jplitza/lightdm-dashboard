@@ -1,13 +1,17 @@
 .BSAGModule table {
-  font-size: 140%;
+}
+.BSAGModule table,
+.BSAGModule td::first-line {
+    font-size: 28pt;
 }
 .BSAGModule th {
   text-align: center;
   padding-right: 10px;
+  width: calc(1.5em + 11px);
 }
 .BSAGModule td {
-  white-space: nowrap;
-  overflow: hidden;
+  padding-right: 10px;
+  font-size: 0;
 }
 .BSAGModule .tram,
 .BSAGModule .bus {
