@@ -3,5 +3,5 @@
 }
 .XKCDModule img {
   max-width: 100%;
-  max-height: 80%;
+  max-height: calc(100% - 1.2*20pt - 0.5em);
 }
