@@ -8,11 +8,14 @@
 .BSAGModule th {
     text-align: center;
     padding-right: 10px;
-    width: calc(1.5em + 11px);
+    width: 1.5em;
+    box-sizing: content-box;
 }
 .BSAGModule td {
     padding-right: 10px;
     font-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .BSAGModule .tram,
 .BSAGModule .bus {
