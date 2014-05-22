@@ -1,54 +1,115 @@
 .BSAGModule table {
-  width: 100%;
+    width: 100%;
 }
 .BSAGModule table,
 .BSAGModule td::first-line {
     font-size: 28pt;
 }
 .BSAGModule th {
-  text-align: center;
-  padding-right: 10px;
-  width: calc(1.5em + 11px);
+    text-align: center;
+    padding-right: 10px;
+    width: calc(1.5em + 11px);
 }
 .BSAGModule td {
-  padding-right: 10px;
-  font-size: 0;
+    padding-right: 10px;
+    font-size: 0;
 }
 .BSAGModule .tram,
 .BSAGModule .bus {
-  display: inline-block;
-  font-weight: 550;
-  text-align: center;
-  margin: 0 auto;
-  color: #fff;
-  width: 1.5em;
-  height: 1.5em;
-  padding-top: 0.05em;
+    display: inline-block;
+    font-weight: 550;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    width: 1.5em;
+    height: 1.5em;
+    padding-top: 0.05em;
 }
 .BSAGModule .bus {
-  border-radius: 50%;
+    border-radius: 50%;
+}
+.BSAGModule .line1,
+.BSAGModule .line25,
+.BSAGModule .line53,
+.BSAGModule .line62,
+.BSAGModule .line81,
+.BSAGModule .line98 {
+    background: #0096f0;
+}
+.BSAGModule .line2,
+.BSAGModule .line35 {
+    background: #005ca9;
+}
+.BSAGModule .line3,
+.BSAGModule .line21,
+.BSAGModule .line91,
+.BSAGModule .line92 {
+    background: #009fe3;
+}
+.BSAGModule .line4,
+.BSAGModule .line26,
+.BSAGModule .line27,
+.BSAGModule .line40,
+.BSAGModule .line41,
+.BSAGModule .line94 {
+    background: #e30613;
+}
+.BSAGModule .line5,
+.BSAGModule .line28,
+.BSAGModule .line44,
+.BSAGModule .line57,
+.BSAGModule .line58,
+.BSAGModule .line82,
+.BSAGModule .line95 {
+    background: #ef7d00;
 }
 .BSAGModule .line6,
-.BSAGModule .line6E {
-  background-color: #f9cd1f;
+.BSAGModule .line6E,
+.BSAGModule .line33,
+.BSAGModule .line34,
+.BSAGModule .line38,
+.BSAGModule .line39,
+.BSAGModule .line42,
+.BSAGModule .line51,
+.BSAGModule .line55,
+.BSAGModule .line63,
+.BSAGModule .line87,
+.BSAGModule .line93 {
+    background: #ffcc00;
 }
-.BSAGModule .line21 {
-  background-color: #3a9bde;
+.BSAGModule .line8,
+.BSAGModule .line20,
+.BSAGModule .line29,
+.BSAGModule .line31,
+.BSAGModule .line52,
+.BSAGModule .line61,
+.BSAGModule .line99 {
+    background: #95c11f;
 }
-.BSAGModule .line22 {
-  background-color: #a69ac7;
+.BSAGModule .line10,
+.BSAGModule .line90 {
+    background: #312783;
 }
-.BSAGModule .line28 {
-  background-color: #e57f17;
+.BSAGModule .line22,
+.BSAGModule .line97 {
+    background: #a69dcd;
 }
-.BSAGModule .line31 {
-  background-color: #96c01c;
+.BSAGModule .line24,
+.BSAGModule .line37,
+.BSAGModule .line96 {
+    background: #951b81;
+}
+.BSAGModule .line30,
+.BSAGModule .line65,
+.BSAGModule .line66,
+.BSAGModule .line80 {
+    background: #a8d3af;
 }
 .BSAGModule .line630,
 .BSAGModule .line670 {
-  background-color: #868789;
-  font-size: 70%;
-  width: 2.1em;
-  height: 1.2em;
-  padding: 0.45em 0;
+    background: #868789;
+    font-size: 70%;
+    width: 2.1em;
+    height: 1.2em;
+    padding: 0.45em 0;
 }
