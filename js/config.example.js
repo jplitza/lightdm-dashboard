@@ -8,6 +8,6 @@ config = {
     "mpdroot": "https:\/\/example.org\/musik\/",
     // list of modules to load (order matters!)
     "modules": ["BSAGModule","MensaModule","XKCDModule","GW2Module","LightDMModule","TimeModule","MPDModule"],
-    // station at which to show departures
-    "bsag_station": "Universität/Zentralbereich"
+    // station at which to show departures. get id with modules/BSAGModule/get_station_id.php
+    "bsag_station": "000695569"
 }

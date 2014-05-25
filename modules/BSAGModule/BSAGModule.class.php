@@ -42,8 +42,8 @@ class BSAGModule extends BaseModule {
             'maxJourneys' => '50',
             'start' => 'yes',
             'inputTripelId' => $this->make_input_triple(array(
-                'O' => $station,
-                'L' => '000695569',
+                #'O' => 'Universität/Zentralbereich',
+                'L' => $station,
                 #'A' => 1,
                 #'X' => '8852217',
                 #'Y' => '53107604',
