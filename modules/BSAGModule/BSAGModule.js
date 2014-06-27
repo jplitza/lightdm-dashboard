@@ -28,6 +28,17 @@ BSAGModule.prototype.paint = function() {
             .addClass(this.data[i].type)
             .addClass('line' + this.data[i].line)
             .text(this.data[i].line);
+        this.data[i].directions.sort(function(a,b) {
+            var ai = config.bsag_priorities.indexOf(a.direction);
+            var bi = config.bsag_priorities.indexOf(b.direction);
+            console.log(a.direction + ai + " vs " + b.direction + bi);
+            if(ai == bi)
+                return 0;
+            else if(ai == -1 || (bi < ai && bi != -1))
+                return 1;
+            else
+                return -1;
+        });
         for(var k = 0; k < this.data[i].directions.length; k++) {
             var connections = new Array();
             for(var j = 0; j < this.data[i].directions[k].connections.length; j++) {
