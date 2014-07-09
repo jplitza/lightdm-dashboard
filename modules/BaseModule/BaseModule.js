@@ -1,5 +1,4 @@
 function BaseModule() {}
-BaseModule.prototype.interval = -1;
 BaseModule.prototype.data = {};
 BaseModule.prototype.intervalHandle = false;
 BaseModule.prototype.setInterval = function(interval) {

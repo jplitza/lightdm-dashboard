@@ -13,7 +13,6 @@ function MensaModule() {
 
 MensaModule.prototype = Object.create(BaseModule.prototype);
 MensaModule.prototype.constructor = MensaModule
-MensaModule.prototype.interval = 60*60*1000; // 60 minutes
 MensaModule.prototype.title = 'Mensa';
 MensaModule.prototype.update = function(data) {
     var template = $('<tr><th></th><td></td></tr>');
