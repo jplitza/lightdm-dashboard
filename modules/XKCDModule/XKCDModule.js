@@ -1,7 +1,7 @@
 function XKCDModule() {
     this.loadStylesheet();
     this.well = this.makeWell();
-    this.setInterval(6*60*60*1000;); // 6 hours
+    this.setInterval(6*60*60*1000); // 6 hours
 }
 
 XKCDModule.prototype = Object.create(BaseModule.prototype);
