@@ -35,8 +35,8 @@ MPDModule.prototype.update = function(data) {
     if(this.timeoutHandle)
         clearTimeout(this.timeoutHandle);
 
-    if(data.artist && data.title) {
-        this.now_playing.text(data.artist + " – " + data.title);
+    if(data.title) {
+        this.now_playing.text((data.artist ? data.artist + " – " : "") + data.title);
         if(data.state == "pause" || data.state == "stop")
             this.toggle_button
                 .removeClass("glyphicon-pause")
