@@ -58,7 +58,7 @@ MPDModule.prototype.update = function(data) {
     }
     this.root.show();
     var nextupdate = data.time - data.elapsed;
-    if(nextupdate < 10)
+    if(nextupdate < 10 || Number.isNaN(nextupdate))
         nextupdate = 10;
     if(nextupdate > 120)
         nextupdate = 120;
