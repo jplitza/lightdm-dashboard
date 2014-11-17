@@ -60,6 +60,10 @@ class BSAGModule extends BaseModule {
             #'clientType' => 'ANDROID',
         );
         $result_str = $this->file_get_contents_post($bsag_url, http_build_query($bsag_post));
+        $result_str = preg_replace_callback('/"(.*)"/Um', function($attr) {
+          return strip_tags($attr[0]);
+        }, $result_str);
+        
         $result = new SimpleXMLElement($result_str);
 
         $connections = array();
